@@ -2,7 +2,7 @@
 
 // original sheet id
 // var sheetID = "1QHl2bjBhMslyFzR5XXPzMLdzzx7oeSKTbgR5PM8qp64";
-// sheet id for https://docs.google.com/spreadsheets/d/1d8ec26hMX-pTQmH5vNlmprXhrin9tYjJOcsEn3_hvRI/pub?output=csv
+// sheet id for https://docs.google.com/spreadsheets/d/1d8ec26hMX-pTQmH5vNlmprXhrin9tYjJOcsEn3_hvRI/pubhtml
 var sheetID = "1d8ec26hMX-pTQmH5vNlmprXhrin9tYjJOcsEn3_hvRI";
 var sheetURL = "https://spreadsheets.google.com/feeds/cells/"+sheetID+"/ohaibtm/public/values?alt=json";
 
@@ -11,18 +11,19 @@ var dataKeys = {
   "Status" : "report-status",
   "Timestamp" : "event-timestamp",
   "Date of Event" : "event-date",
-  "Your Name" : "club-organizer",
-  "Your Twitter Handle (Optional)" : "club-contact-details",
-  "Club Name" : "club-name",
-  "Club Link" : "club-link",
+  "Your Name" : "sg-organizer",
+  "Your Twitter Handle (Optional)" : "sg-contact-details",
+  "Study Group Name" : "sg-name",
+  "Study Group Link" : "sg-link",
   "City" : "event-city",
-  "Country" : "club-country",
-  "Event Location" : "event-location",
+  "Country" : "sg-country",
+  "City" : "event-city",
+  "Country" : "event-country",
   "Attendance" : "event-attendance",
   "Event Description" : "event-description",
   "Event Cover Photo" : "event-photo",
   "Event Creations" : "event-creations",
-  "Web Literacy Skills" : "event-skills",
+  "Study Group Skills" : "event-skills",
   "Links to Curriculum (Optional)" : "event-links-curriculum",
   "Links to Photos (Optional)" : "event-links-photos",
   "Links to Blogpost (Optional)" : "event-links-blogpost",

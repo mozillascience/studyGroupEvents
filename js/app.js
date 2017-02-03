@@ -1,4 +1,4 @@
-// Mozilla Clubs Events v1.0
+// Mozilla Study Groups Events v1.0
 
 var dayNames = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -190,7 +190,7 @@ function showPop(id){
       found = true;
       pop.show();
 
-      history.replaceState({}, "Mozilla Clubs Event Report " + item.id, "?event=" + item.id);
+      history.replaceState({}, "Mozilla Study Groups Event Report " + item.id, "?event=" + item.id);
 
       pop.find(".value").addClass("not-specified").text("Not filled in");
       pop.find(".value").parent().addClass("not-specified");
@@ -219,7 +219,7 @@ function showPop(id){
             value = numberWithCommas(value);
           }
 
-          if(j == "club-contact-details"){
+          if(j == "sg-contact-details"){
             if(value.length > 0) {
               value = value.replace("@","");
               value = "https://twitter.com/" + value;
@@ -344,7 +344,7 @@ function updateCounts(){
       if(!isNaN(attendance)){
         participants = participants + attendance;
       }
-      var country = item["club-country"];
+      var country = item["sg-country"];
       if(country != "" && countries.indexOf(country) < 0) {
         countries.push(country);
       }
