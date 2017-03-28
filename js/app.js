@@ -9,6 +9,12 @@ var touchEnabled = false;
 
 $(document).ready(function(){
 
+  $("#core").click(function(){
+            var test = document.getElementsByClassName('value')[15].innerHTML;
+            var link = "http://maps.google.com/maps?q=" +test;
+            window.open(link);
+   });  
+
   if('ontouchstart' in document.documentElement){
     touchEnabled = true;
   }
