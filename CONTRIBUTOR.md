@@ -15,7 +15,7 @@ This document is a set of guidelines for contributing to **Study Group Event Vis
 
 ## Participation guidelines
 
-This project adheres to a [Mozilla Community Guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/). By participating, you are expected to uphold this code. Please report unacceptable behavior to ipsha21@gmail.com.
+This project adheres to a [Mozilla Community Guidelines](https://www.mozilla.org/en-US/about/governance/policies/participation/). By participating, you are expected to uphold this code. Please report unacceptable behavior to [Aurelia](https://gitter.im/auremoser).
 
 ## What we're working on
 
