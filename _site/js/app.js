@@ -10,7 +10,7 @@ var touchEnabled = false;
 $(document).ready(function(){
 
   $("#core").click(function(){
-            var test = document.getElementById('loc').innerHTML;
+            var test = document.getElementsByClassName('value')[7].innerHTML;
             var link = "http://maps.google.com/maps?q=" +test;
             window.open(link);
    });  
@@ -449,9 +449,11 @@ function cleanupData(){
         newItem["event-date"] = newItem["event-timestamp"];
       }
 
-      var name = newItem["event-links-video"]
-      var res = name.split('/');	
-      newItem["sg-organizer"] = res[3];
+      /*if(newItem["sg-link"]){
+	var name = newItem["sg-link"];
+	var res = name.split('/');	
+	newItem["sg-link"] = res[3];
+      }*/
 
       newItem.id = i + 2;
       newItem.visible = true; //visible by default - this is important for the Popup
