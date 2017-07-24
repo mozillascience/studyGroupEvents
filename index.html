@@ -1,9 +1,11 @@
 <html>
   <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet/less" href="style.less" type="text/css">
     <link rel="stylesheet/less" href="narrow.less" type="text/css">
     <link rel="stylesheet" href="http://flukeout.github.io/mozmaker-icon-font/cdn/mozmaker-icons.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> 
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/png" sizes="196x196" href="https://mozilla.org/media/img/favicon/favicon-196x196.png">
     <title>Mozilla Study Group Event Reports</title>
@@ -35,14 +37,29 @@
   </head>
 
   <body>
-
+ <div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Home &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Dashboard</a>
+  <a href="https://mozillascience.github.io/studyGroupEvents/" class="w3-bar-item w3-button">All Events</a>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">Archives
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button">2016</a>
+      <a href="#" class="w3-bar-item w3-button">2015</a>
+    </div>
+  </div> 
+</div>
     <header>
       <div class="inner-wrapper">
+	<button class="w3-button w3-olive w3-xlarge" onclick="w3_open()">&#9776;</button>
         <h1>Mozilla Study Group Events</h1>
-        <a class="button" title="Add a new event report" href="https://goo.gl/forms/ZTxdAx0jTxtefBfH3">+ Add Event Report</a>
+<!--        <a class="button" title="Add a new event report" href="https://goo.gl/forms/ZTxdAx0jTxtefBfH3">+ Add Event Report</a> -->
       </div>
-    </header>
-
+   </header>
+    
     <div class="throbber">
       <h2>Loading reports...</h2>
       <div class="dot"></div>
