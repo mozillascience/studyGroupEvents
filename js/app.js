@@ -7,8 +7,8 @@ var data = []; // THIS STORES IT ALLLLLLLLL muahawhwhwhwhwahaha ALL OF IT.
 
 var touchEnabled = false;
 
-$(document).ready(function(){
 
+$(document).ready(function(){
   $("#core").click(function(){
             var test = document.getElementById('loc').innerHTML;
             var link = "http://maps.google.com/maps?q=" +test;
@@ -128,6 +128,12 @@ $(document).ready(function(){
   });
 });
 
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
 
 function hideLargePhoto(){
   $(".large-photo").hide();
