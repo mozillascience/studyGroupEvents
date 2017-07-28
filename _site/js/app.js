@@ -7,10 +7,10 @@ var data = []; // THIS STORES IT ALLLLLLLLL muahawhwhwhwhwahaha ALL OF IT.
 
 var touchEnabled = false;
 
-$(document).ready(function(){
 
+$(document).ready(function(){
   $("#core").click(function(){
-            var test = document.getElementsByClassName('value')[7].innerHTML;
+            var test = document.getElementById('loc').innerHTML;
             var link = "http://maps.google.com/maps?q=" +test;
             window.open(link);
    });  
@@ -38,8 +38,18 @@ $(document).ready(function(){
 
   $.get(sheetURL).done(function(returnedData) {
     rawData = parseDriveData(returnedData);
-
-    cleanupData();
+    if (document.title == "Archives-16") { //fetching the title to get the Year Page 
+	cleanupData_2016();
+    }
+    else if (document.title == "Archives-15") {
+	cleanupData_2015();
+    }
+    else if (document.title == "All Events") {
+	cleanupData_All();
+    }
+    else {
+    	cleanupData();
+    }
 
     localStorage.setItem("data",JSON.stringify(data));
     if(data.length == 0) {
@@ -128,6 +138,12 @@ $(document).ready(function(){
   });
 });
 
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
 
 function hideLargePhoto(){
   $(".large-photo").hide();
@@ -317,6 +333,16 @@ function formatDate(dateString) {
   return monthName + " " + dayOfMonth + ", " + year;
 }
 
+function formatYear(dateString) {
+  var date = new Date(dateString);
+  if(date == "Invalid Date") {
+    return "Date Unknown";
+  }
+  var year = date.getFullYear();
+  return year;
+}
+
+
 // Sorts event report objects by date
 
 function dateSort(a,b){
@@ -440,6 +466,99 @@ function cleanupData(){
   for(var i = 0; i < rawData.length; i++){
     var item = rawData[i];
       var newItem = {};
+	var value;
+      for(var k in item) {
+	//alert(dataKeys[k]);
+	var newKey = dataKeys[k];		
+       	newItem[newKey] = item[k];
+      }
+
+      if(newItem["event-date"] == "") {
+        newItem["event-date"] = newItem["event-timestamp"];
+      }
+      value = newItem["event-date"];
+      value = formatYear(value);
+    
+      var name = newItem["event-links-video"];
+      var res = name.split('/');	
+      newItem["sg-organizer"] = res[3]; 
+
+      if (value != "2016" && value != "2015") {
+      	newItem.id = i + 2;
+      	newItem.visible = true; //visible by default - this is important for the Popup
+      	data.push(newItem);
+      }
+  }
+
+  data = data.sort(dateSort);
+}
+
+function cleanupData_2016(){
+  for(var i = 0; i < rawData.length; i++){
+    var item = rawData[i];
+      var newItem = {};
+        var value;
+      for(var k in item) {
+        //alert(dataKeys[k]);
+        var newKey = dataKeys[k];
+        newItem[newKey] = item[k];
+      }
+
+      if(newItem["event-date"] == "") {
+        newItem["event-date"] = newItem["event-timestamp"];
+      }
+      value = newItem["event-date"];
+      value = formatYear(value);
+
+      var name = newItem["event-links-video"];
+      var res = name.split('/');
+      newItem["sg-organizer"] = res[3];
+
+      if (value == "2016") {
+        newItem.id = i + 2;
+        newItem.visible = true; //visible by default - this is important for the Popup
+        data.push(newItem);
+      }
+  }
+
+  data = data.sort(dateSort);
+}
+
+function cleanupData_2015(){
+  for(var i = 0; i < rawData.length; i++){
+    var item = rawData[i];
+      var newItem = {};
+        var value;
+      for(var k in item) {
+        //alert(dataKeys[k]);
+        var newKey = dataKeys[k];
+        newItem[newKey] = item[k];
+      }
+
+      if(newItem["event-date"] == "") {
+        newItem["event-date"] = newItem["event-timestamp"];
+      }
+      value = newItem["event-date"];
+      value = formatYear(value);
+
+      var name = newItem["event-links-video"];
+      var res = name.split('/');
+      newItem["sg-organizer"] = res[3];
+
+      if (value == "2015") {
+        newItem.id = i + 2;
+        newItem.visible = true; //visible by default - this is important for the Popup
+        data.push(newItem);
+      }
+  }
+
+  data = data.sort(dateSort);
+}
+
+function cleanupData_All(){
+  for(var i = 0; i < rawData.length; i++){
+    var item = rawData[i];
+      var newItem = {};
       for(var k in item) {
         var newKey = dataKeys[k];
         newItem[newKey] = item[k];
@@ -449,11 +568,9 @@ function cleanupData(){
         newItem["event-date"] = newItem["event-timestamp"];
       }
 
-      /*if(newItem["sg-link"]){
-	var name = newItem["sg-link"];
-	var res = name.split('/');	
-	newItem["sg-link"] = res[3];
-      }*/
+      var name = newItem["event-links-video"];
+      var res = name.split('/');
+      newItem["sg-organizer"] = res[3];
 
       newItem.id = i + 2;
       newItem.visible = true; //visible by default - this is important for the Popup
@@ -462,6 +579,7 @@ function cleanupData(){
 
   data = data.sort(dateSort);
 }
+
 
 // Hides elements on the page whose details don't contain
 // any matches from the provided search term.
